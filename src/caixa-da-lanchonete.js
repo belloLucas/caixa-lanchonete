@@ -4,13 +4,19 @@ class CaixaDaLanchonete {
   constructor() {
     this.cardapio = [
       { codigo: "cafe", descricao: "Café", valor: 3.0 },
-      { codigo: "chantily", descricao: "Chantily (extra do Café)", valor: 1.5 },
+      {
+        codigo: "chantily",
+        descricao: "Chantily (extra do Café)",
+        valor: 1.5,
+        codigoItemPrincipal: "cafe",
+      },
       { codigo: "suco", descricao: "Suco Natural", valor: 6.2 },
       { codigo: "sanduiche", descricao: "Sanduíche", valor: 6.5 },
       {
         codigo: "queijo",
         descricao: "Queijo (extra do sanduíche)",
         valor: 2.0,
+        codigoItemPrincipal: "sanduiche",
       },
       { codigo: "salgado", descricao: "Salgado", valor: 7.25 },
       { codigo: "combo1", descricao: "1 Suco e 1 Sanduíche", valor: 9.5 },
@@ -21,7 +27,7 @@ class CaixaDaLanchonete {
   }
 
   calcularValorDaCompra(metodoDePagamento, itens) {
-    //Itens e quantidades
+    //Separando Itens e quantidades em valores individuais
     const itensDivididos = [];
     for (let i = 0; i < itens.length; i++) {
       const itemInfo = itens[i].split(",");
@@ -46,6 +52,7 @@ class CaixaDaLanchonete {
       });
     }
 
+    //Separando itens principais e extras em arrays diferentes, para poder comparar
     const itensPrincipais = [];
     const itensExtras = [];
     for (const itemPedido of pedido) {
@@ -54,7 +61,7 @@ class CaixaDaLanchonete {
       );
 
       if (itemCardapio) {
-        if (itemCardapio.descricao.includes("(extra")) {
+        if (itemCardapio.descricao.includes("extra")) {
           itensExtras.push(itemPedido);
         } else {
           itensPrincipais.push(itemPedido);
@@ -62,8 +69,23 @@ class CaixaDaLanchonete {
       }
     }
 
-    if (itensExtras.length > 0 && itensPrincipais.length <= 0) {
-      return "Item extra não pode ser pedido sem o principal";
+    //Comparação para saber se o item extra no pedido está acompanhado do seu respectivo item principal
+    for (let i = 0; i < itensExtras.length; i++) {
+      const extra = this.cardapio.find(
+        (item) => item.codigo === itensExtras[i].item
+      );
+
+      const principal = this.cardapio.find(
+        (item) => item.codigo === extra.codigoItemPrincipal
+      );
+
+      const itemPrincipalNoPedido = itensPrincipais.find(
+        (item) => item.item === principal.codigo
+      );
+
+      if (!itemPrincipalNoPedido) {
+        return "Item extra não pode ser pedido sem o principal";
+      }
     }
 
     //Calculando o valor do pedido
