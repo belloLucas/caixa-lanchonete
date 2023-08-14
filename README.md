@@ -18,10 +18,9 @@ git clone https://github.com/belloLucas/desafio-lucas-bello.git
 npm install
 ```
 
-### VALIDANDO A SOLUÇÃO
+### TESTANDO A SOLUÇÃO
 
-Junto com a estrutura básica você está recebendo alguns cenários de testes para auxiliar na validação da sua solução. Recomendamos que você crie mais casos de teste para aumentar a confiabilidade da sua solução.
-Para testar sua solução com os cenários já criados, basta rodar o seguinte comando:
+Alguns cenários de testes já foram criados e acompanham a estrutura básica. Para rodar estes testes basta usar o seguinte comando no terminal:
 
 ```bash
 npm test
