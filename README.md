@@ -2,12 +2,12 @@
 
 ## COMO BAIXAR
 
-Para baixar esse projeto, basta clicar no botão <> Code e escolher a forma de download. Sendo via ZIP ou através do comando git clone, via terminal: ```bash
+Para baixar esse projeto, basta clicar no botão <> Code e escolher a forma de download. Sendo via ZIP ou através do comando git clone, via terminal:
+
+```bash
 git clone https://github.com/belloLucas/desafio-lucas-bello.git
 
-````
-
-
+```
 
 ### INSTALANDO E RODANDO NA SUA MÁQUINA
 
@@ -16,7 +16,7 @@ git clone https://github.com/belloLucas/desafio-lucas-bello.git
 
 ```bash
 npm install
-````
+```
 
 ### VALIDANDO A SOLUÇÃO
 
