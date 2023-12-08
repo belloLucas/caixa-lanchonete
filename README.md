@@ -9,7 +9,7 @@ A proposta desse desafio é que consigamos montar um pedido dado um cardápio de
 Para baixar esse projeto, basta clicar no botão <> Code e escolher a forma de download. Sendo via ZIP ou através do comando git clone, via terminal:
 
 ```bash
-git clone https://github.com/belloLucas/desafio-lucas-bello.git
+git clone https://github.com/belloLucas/caixa-lanchonete.git
 
 ```
 
